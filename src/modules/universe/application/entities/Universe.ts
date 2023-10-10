@@ -1,5 +1,5 @@
 import { UniverseObject } from '../../domain/entities/Object';
-import { map } from '../../../../../map.json';
+import { map } from '../../../../public/map.json';
 import { writeFileSync } from 'fs';
 
 export class Universe {

@@ -13,7 +13,7 @@ import { SoloonRepository } from './modules/universe/infraestructure/repository/
 import { api } from './modules/universe/infraestructure/http/api';
 import { ComethRepository } from './modules/universe/infraestructure/repository/cometh.repository';
 import { PolyanetRepository } from './modules/universe/infraestructure/repository/polyanet.repository';
-import { map } from '../map.json';
+import { map } from './public/map.json';
 import { UniverseRepository } from './modules/universe/infraestructure/repository/universe.repository';
 export const main = async () => {
   const universe = new Universe();
@@ -24,8 +24,6 @@ export const main = async () => {
   const universeRepository = new UniverseRepository(api);
 
   const goal = await universeRepository.getGoal();
-
-  console.log({ goal });
 
   for (let row = 0; row < universe.value.length; row++) {
     for (let col = 0; col < goal[row].length; col++) {
