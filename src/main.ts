@@ -1,5 +1,4 @@
 import { Universe } from './modules/universe/application/entities/Universe';
-import { goal } from '../goal.json';
 import {
   Cometh,
   ComethDirection,
@@ -15,12 +14,18 @@ import { api } from './modules/universe/infraestructure/http/api';
 import { ComethRepository } from './modules/universe/infraestructure/repository/cometh.repository';
 import { PolyanetRepository } from './modules/universe/infraestructure/repository/polyanet.repository';
 import { map } from '../map.json';
+import { UniverseRepository } from './modules/universe/infraestructure/repository/universe.repository';
 export const main = async () => {
   const universe = new Universe();
 
   const soloonRepository = new SoloonRepository(api);
   const comethRepository = new ComethRepository(api);
   const polyanetRepository = new PolyanetRepository(api);
+  const universeRepository = new UniverseRepository(api);
+
+  const goal = await universeRepository.getGoal();
+
+  console.log({ goal });
 
   for (let row = 0; row < universe.value.length; row++) {
     for (let col = 0; col < goal[row].length; col++) {
